@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficina de Pesca - Mobile</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #0f1720; color: white; margin: 0; padding: 20px; }
+        .card { background: #1f2a38; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid orange; }
+        h1 { color: orange; text-align: center; }
+        .btn { background: #27ae60; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        .status { font-size: 0.9em; color: #bdc3c7; }
+        input, select { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: none; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <h1>🎣 Oficina de Pesca</h1>
+    
+    <div id="login-section">
+        <div class="card">
+            <h3>Acesso ao Sistema</h3>
+            <input type="text" id="user" placeholder="Usuário">
+            <input type="password" id="pass" placeholder="Senha">
+            <button class="btn" onclick="fazerLogin()">ENTRAR</button>
+        </div>
+    </div>
+
+    <div id="app-section" style="display:none;">
+        <div class="card">
+            <h3>Resumo do Dia</h3>
+            <p id="stats">Carregando dados...</p>
+        </div>
+
+        <div class="card">
+            <h3>Nova Ordem de Serviço</h3>
+            <input type="text" id="cliente" placeholder="Nome do Cliente">
+            <input type="text" id="equip" placeholder="Equipamento">
+            <input type="text" id="defeito" placeholder="Defeito">
+            <button class="btn" onclick="salvarOS()">CRIAR O.S.</button>
+        </div>
+        <button class="btn" style="background:#c0392b" onclick="logout()">SAIR</button>
+    </div>
+
+    <script>
+        let token = "";
+
+        async function fazerLogin() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            
+            const formData = new FormData();
+            formData.append('username', u);
+            formData.append('password', p);
+
+            try {
+                const response = await fetch('/api/token', { method: 'POST', body: formData });
+                const data = await response.json();
+                
+                if (data.access_token) {
+                    token = data.access_token;
+                    document.getElementById('login-section').style.display = 'none';
+                    document.getElementById('app-section').style.display = 'block';
+                    carregarDashboard();
+                } else {
+                    alert("Erro: " + data.detail);
+                }
+            } catch (e) {
+                alert("Erro ao conectar com o servidor.");
+            }
+        }
+
+        async function carregarDashboard() {
+            const response = await fetch('/api/dashboard', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            const data = await response.json();
+            document.getElementById('stats').innerHTML = 
+                `Clientes: ${data.total_clientes} <br> O.S. Aguardando: ${data.os_aguardando}`;
+        }
+
+        async function salvarOS() {
+            alert("Funcionalidade de criação via API sendo sincronizada.");
+        }
+
+        function logout() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

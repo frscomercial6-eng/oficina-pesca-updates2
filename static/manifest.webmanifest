@@ -1,0 +1,11 @@
+{
+  "name": "Oficina de Pesca",
+  "short_name": "Oficina",
+  "start_url": "/web/login",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f1720",
+  "theme_color": "#1a1a2e",
+  "description": "Acesso mobile ao sistema da Oficina de Pesca.",
+  "lang": "pt-BR"
+}
