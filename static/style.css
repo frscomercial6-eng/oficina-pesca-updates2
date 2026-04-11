@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ─── Oficina de Pesca — Web UI Stylesheet ───────────────────────────────── */
 
 :root {
@@ -113,3 +114,120 @@ body {
   .ofp-card-value { font-size: 1.3rem; }
   h5 { font-size: 1rem; }
 }
+=======
+/* ─── Oficina de Pesca — Web UI Stylesheet ───────────────────────────────── */
+
+:root {
+  --ofp-bg:        #0f1923;
+  --ofp-surface:   #1a2535;
+  --ofp-surface2:  #1f2d40;
+  --ofp-border:    #2c3e50;
+  --ofp-orange:    #f39c12;
+  --ofp-green:     #27ae60;
+  --ofp-text:      #ecf0f1;
+  --ofp-muted:     #7f8c8d;
+}
+
+/* Base */
+body {
+  background-color: var(--ofp-bg);
+  color: var(--ofp-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 0.93rem;
+}
+
+/* Navbar */
+.ofp-navbar {
+  background: #111b27 !important;
+  border-bottom: 2px solid var(--ofp-orange);
+  padding: .55rem 1rem;
+}
+.ofp-navbar .navbar-brand { color: var(--ofp-orange) !important; font-size: 1.15rem; }
+.ofp-navbar .nav-link       { color: #bdc3c7 !important; }
+.ofp-navbar .nav-link:hover,
+.ofp-navbar .nav-link.active { color: var(--ofp-orange) !important; }
+.ofp-badge-role {
+  background: var(--ofp-surface2);
+  color: var(--ofp-orange);
+  border: 1px solid var(--ofp-border);
+  font-weight: 500;
+  padding: .35rem .7rem;
+  border-radius: 50rem;
+}
+
+/* Cards do dashboard */
+.ofp-card {
+  background: var(--ofp-surface);
+  border: 1px solid var(--ofp-border);
+  border-radius: 16px;
+  transition: transform .15s, box-shadow .15s;
+  cursor: default;
+}
+.ofp-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+.ofp-card-icon  { font-size: 2rem; margin-bottom: .4rem; }
+.ofp-card-value { font-size: 1.7rem; font-weight: 700; line-height: 1.2; }
+.ofp-card-label { font-size: .78rem; color: var(--ofp-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: .3rem; }
+
+/* Atalhos do dashboard */
+.ofp-shortcut {
+  background: var(--ofp-surface);
+  border: 1px solid var(--ofp-border);
+  border-radius: 16px;
+  padding: 1.8rem 1rem;
+  transition: background .15s, transform .15s;
+}
+.ofp-shortcut:hover {
+  background: var(--ofp-surface2);
+  transform: translateY(-3px);
+}
+
+/* Tabelas */
+.ofp-table-wrap {
+  background: var(--ofp-surface);
+  border: 1px solid var(--ofp-border);
+  border-radius: 14px;
+  overflow-x: auto;
+}
+.table-dark { --bs-table-bg: transparent; --bs-table-striped-bg: rgba(255,255,255,.03); }
+.ofp-thead th {
+  background: var(--ofp-surface2) !important;
+  color: var(--ofp-orange);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  border-bottom: 2px solid var(--ofp-orange) !important;
+  padding: .75rem .8rem;
+  white-space: nowrap;
+}
+.table td { border-color: rgba(255,255,255,.06); padding: .6rem .8rem; }
+
+/* Cores das linhas de lançamentos */
+.ofp-row-entrada { background: rgba(39,174,96,.07) !important; }
+.ofp-row-saida   { background: rgba(192,57,43,.07) !important; }
+
+/* Inputs */
+.ofp-input {
+  background: var(--ofp-bg) !important;
+  color: var(--ofp-text) !important;
+  border: 1px solid var(--ofp-border) !important;
+}
+.ofp-input:focus {
+  border-color: var(--ofp-green) !important;
+  box-shadow: 0 0 0 2px rgba(39,174,96,.25) !important;
+}
+
+/* Footer */
+.ofp-footer {
+  background: #111b27;
+  border-top: 1px solid var(--ofp-border);
+  margin-top: 2rem;
+  color: var(--ofp-muted);
+  font-size: .78rem;
+}
+
+/* Responsividade extra — phones pequenos */
+@media (max-width: 400px) {
+  .ofp-card-value { font-size: 1.3rem; }
+  h5 { font-size: 1rem; }
+}
+>>>>>>> 2c739f6 (Atualiza tela inicial do app_celular.html)

@@ -1,0 +1,14 @@
+{
+  "licencas": {
+    "2c082ca9fa4a9caad1e919d3e3e87cca663972bcf157cfbd62caa456f299645c": {
+      "status": "ativo",
+      "tipo": "PERMANENTE",
+      "cliente": "PEDRO"
+    },
+    "2323fbf200ebe031be0f44b8986d9a08abbe90379f4bcdf23277a805042c1ede": {
+      "status": "ativo",
+      "tipo": "MENSAL",
+      "cliente": "JOAO"
+    }
+  }
+}

@@ -10,4 +10,18 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.12
       - key: OFP_LICENCA_SECRET
+=======
+services:
+  - type: web
+    name: oficina-pesca-api
+    runtime: python
+    buildCommand: python3 -m pip install --upgrade pip setuptools wheel && python3 -m pip install -r requirements.txt
+    startCommand: python3 -m uvicorn servidor:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OFP_JWT_SECRET
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: OFP_LICENCA_SECRET
+>>>>>>> 2c739f6 (Atualiza tela inicial do app_celular.html)
         value: OFP-2026-PRIVATE-SECRET

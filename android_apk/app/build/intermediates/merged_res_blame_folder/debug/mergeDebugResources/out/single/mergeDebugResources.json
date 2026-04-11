@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/layout_activity_main.xml.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.oficinapesca.mobile.app-debug-27:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.oficinapesca.mobile.app-main-29:/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Oficina de Pesca{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <h4 class="mb-0 text-warning fw-bold">
+    <i class="bi bi-speedometer2"></i> {{ nome_oficina }}
+  </h4>
+</div>
+
+<!-- Cards de resumo -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="ofp-card text-center py-4">
+      <div class="ofp-card-icon text-info"><i class="bi bi-people-fill"></i></div>
+      <div class="ofp-card-value">{{ total_clientes }}</div>
+      <div class="ofp-card-label">Clientes</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="ofp-card text-center py-4">
+      <div class="ofp-card-icon text-warning"><i class="bi bi-clock-history"></i></div>
+      <div class="ofp-card-value text-warning">{{ os_abertas }}</div>
+      <div class="ofp-card-label">Aguardando</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="ofp-card text-center py-4">
+      <div class="ofp-card-icon" style="color:#3498db"><i class="bi bi-tools"></i></div>
+      <div class="ofp-card-value" style="color:#3498db">{{ os_andamento }}</div>
+      <div class="ofp-card-label">Em Andamento</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="ofp-card text-center py-4">
+      <div class="ofp-card-icon text-success"><i class="bi bi-cash-coin"></i></div>
+      <div class="ofp-card-value text-success">{{ saldo }}</div>
+      <div class="ofp-card-label">Saldo em Caixa</div>
+    </div>
+  </div>
+</div>
+
+<!-- Atalhos rápidos -->
+<h6 class="text-muted mb-3">ACESSO RÁPIDO</h6>
+<div class="row g-3">
+  <div class="col-6 col-md-3">
+    <a href="/web/os" class="ofp-shortcut d-flex flex-column align-items-center justify-content-center text-decoration-none py-4">
+      <i class="bi bi-clipboard2-check fs-2 mb-2" style="color:#f39c12"></i>
+      <span class="fw-bold text-light">Ordens de Serviço</span>
+    </a>
+  </div>
+  <div class="col-6 col-md-3">
+    <a href="/web/clientes" class="ofp-shortcut d-flex flex-column align-items-center justify-content-center text-decoration-none py-4">
+      <i class="bi bi-person-plus-fill fs-2 mb-2 text-info"></i>
+      <span class="fw-bold text-light">Clientes</span>
+    </a>
+  </div>
+  <div class="col-6 col-md-3">
+    <a href="/web/financeiro" class="ofp-shortcut d-flex flex-column align-items-center justify-content-center text-decoration-none py-4">
+      <i class="bi bi-wallet2 fs-2 mb-2 text-success"></i>
+      <span class="fw-bold text-light">Financeiro</span>
+    </a>
+  </div>
+  <div class="col-6 col-md-3">
+    <a href="/api/docs" target="_blank" class="ofp-shortcut d-flex flex-column align-items-center justify-content-center text-decoration-none py-4">
+      <i class="bi bi-code-slash fs-2 mb-2 text-secondary"></i>
+      <span class="fw-bold text-light">API Docs</span>
+    </a>
+  </div>
+</div>
+{% endblock %}

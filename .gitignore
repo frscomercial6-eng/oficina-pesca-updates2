@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.vscode/
+
+# Banco de dados e Logs (NÃO levar para o Git)
+oficina.db
+oficina.db-journal
+oficina.db-wal
+logs/
+*.pre_sync*

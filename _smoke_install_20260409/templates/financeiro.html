@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Financeiro — Oficina de Pesca{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+  <h5 class="mb-0 text-warning fw-bold"><i class="bi bi-cash-coin"></i> Fluxo de Caixa</h5>
+  <span class="badge bg-secondary">{{ lancamentos|length }} lançamento(s)</span>
+</div>
+
+<!-- Resumo financeiro -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-4">
+    <div class="ofp-card text-center py-3">
+      <div class="small text-muted mb-1">SALDO GERAL</div>
+      <div class="fw-bold fs-5 text-success">{{ saldo }}</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4">
+    <div class="ofp-card text-center py-3">
+      <div class="small text-muted mb-1">TOTAL ENTRADAS</div>
+      <div class="fw-bold fs-5" style="color:#2ecc71">{{ total_entradas }}</div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="ofp-card text-center py-3">
+      <div class="small text-muted mb-1">TOTAL SAÍDAS</div>
+      <div class="fw-bold fs-5 text-danger">{{ total_saidas }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tabela de lançamentos -->
+<div class="ofp-table-wrap">
+  {% if lancamentos %}
+  <table class="table table-dark table-hover table-sm align-middle mb-0">
+    <thead class="ofp-thead">
+      <tr>
+        <th class="d-none d-sm-table-cell">ID</th>
+        <th>Data</th>
+        <th>Descrição</th>
+        <th>Tipo</th>
+        <th class="text-end">Valor</th>
+        <th class="d-none d-md-table-cell">Categoria</th>
+        <th class="d-none d-md-table-cell">Pagamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for l in lancamentos %}
+      <tr class="{% if l[3] == 'ENTRADA' %}ofp-row-entrada{% else %}ofp-row-saida{% endif %}">
+        <td class="d-none d-sm-table-cell text-muted small">{{ l[0] }}</td>
+        <td class="small">{{ l[1] or '—' }}</td>
+        <td>
+          {{ (l[2] or '')[:45] }}{% if l[2] and l[2]|length > 45 %}…{% endif %}
+        </td>
+        <td>
+          {% if l[3] == 'ENTRADA' %}
+            <span class="badge bg-success">ENTRADA</span>
+          {% else %}
+            <span class="badge bg-danger">SAÍDA</span>
+          {% endif %}
+        </td>
+        <td class="text-end fw-semibold">
+          {% if l[3] == 'ENTRADA' %}
+            <span class="text-success">R$ {{ "%.2f"|format(l[4] or 0) }}</span>
+          {% else %}
+            <span class="text-danger">— R$ {{ "%.2f"|format(l[4] or 0) }}</span>
+          {% endif %}
+        </td>
+        <td class="d-none d-md-table-cell small text-muted">{{ l[5] or '—' }}</td>
+        <td class="d-none d-md-table-cell small text-muted">{{ l[6] or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="text-center text-muted py-5">
+    <i class="bi bi-wallet2 fs-1"></i>
+    <p class="mt-2">Nenhum lançamento encontrado.</p>
+  </div>
+  {% endif %}
+</div>
+
+<p class="text-muted small mt-2">
+  <i class="bi bi-info-circle"></i>
+  Lançamentos manuais disponíveis no aplicativo desktop.
+</p>
+{% endblock %}

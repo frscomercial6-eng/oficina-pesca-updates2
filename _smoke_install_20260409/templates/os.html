@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Ordens de Serviço — Oficina de Pesca{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+  <h5 class="mb-0 text-warning fw-bold"><i class="bi bi-clipboard2-check"></i> Ordens de Serviço</h5>
+  <span class="badge bg-secondary">{{ orcamentos|length }} registro(s)</span>
+</div>
+
+<!-- Filtro de status -->
+<div class="d-flex gap-2 mb-3 flex-wrap">
+  <a href="/web/os" class="btn btn-sm {% if not status_filtro %}btn-warning{% else %}btn-outline-secondary{% endif %}">
+    Todos
+  </a>
+  <a href="/web/os?status_filtro=AGUARDANDO"
+     class="btn btn-sm {% if status_filtro == 'AGUARDANDO' %}btn-warning{% else %}btn-outline-warning{% endif %}">
+    Aguardando
+  </a>
+  <a href="/web/os?status_filtro=EM ANDAMENTO"
+     class="btn btn-sm {% if status_filtro == 'EM ANDAMENTO' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+    Em Andamento
+  </a>
+  <a href="/web/os?status_filtro=FINALIZADO"
+     class="btn btn-sm {% if status_filtro == 'FINALIZADO' %}btn-success{% else %}btn-outline-success{% endif %}">
+    Finalizados
+  </a>
+  <a href="/web/os?status_filtro=REPROVADO"
+     class="btn btn-sm {% if status_filtro == 'REPROVADO' %}btn-danger{% else %}btn-outline-danger{% endif %}">
+    Reprovados
+  </a>
+</div>
+
+<!-- Tabela responsiva -->
+<div class="ofp-table-wrap">
+  {% if orcamentos %}
+  <table class="table table-dark table-hover table-sm align-middle mb-0">
+    <thead class="ofp-thead">
+      <tr>
+        <th>Nº</th>
+        <th>Cliente</th>
+        <th class="d-none d-sm-table-cell">Equipamento</th>
+        <th class="d-none d-md-table-cell">Defeito</th>
+        <th>Total</th>
+        <th class="d-none d-sm-table-cell">Saldo</th>
+        <th>Status</th>
+        <th class="d-none d-md-table-cell">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in orcamentos %}
+      <tr>
+        <td class="text-muted fw-bold">#{{ o[0] }}</td>
+        <td class="fw-semibold">{{ o[1] or '—' }}</td>
+        <td class="d-none d-sm-table-cell small">{{ o[2] or '—' }}</td>
+        <td class="d-none d-md-table-cell small text-muted">
+          {{ (o[3] or '')[:40] }}{% if o[3] and o[3]|length > 40 %}…{% endif %}
+        </td>
+        <td class="text-end">R$ {{ "%.2f"|format(o[4] or 0) }}</td>
+        <td class="d-none d-sm-table-cell text-end text-warning">R$ {{ "%.2f"|format(o[6] or 0) }}</td>
+        <td>
+          {% set s = o[7]|upper if o[7] else '' %}
+          {% if s == 'AGUARDANDO' %}
+            <span class="badge bg-warning text-dark">{{ o[7] }}</span>
+          {% elif s == 'EM ANDAMENTO' %}
+            <span class="badge bg-primary">{{ o[7] }}</span>
+          {% elif s == 'FINALIZADO' or s == 'APROVADO' %}
+            <span class="badge bg-success">{{ o[7] }}</span>
+          {% elif s == 'REPROVADO' or s == 'CANCELADO' %}
+            <span class="badge bg-danger">{{ o[7] }}</span>
+          {% else %}
+            <span class="badge bg-secondary">{{ o[7] or '—' }}</span>
+          {% endif %}
+        </td>
+        <td class="d-none d-md-table-cell small text-muted">{{ o[8] or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="text-center text-muted py-5">
+    <i class="bi bi-clipboard-x fs-1"></i>
+    <p class="mt-2">Nenhuma ordem de serviço encontrada.</p>
+  </div>
+  {% endif %}
+</div>
+
+<p class="text-muted small mt-2">
+  <i class="bi bi-info-circle"></i>
+  Criação e edição de OS disponível no aplicativo desktop.
+</p>
+{% endblock %}

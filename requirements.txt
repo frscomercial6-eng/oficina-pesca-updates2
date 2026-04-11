@@ -4,4 +4,21 @@ jinja2
 python-multipart
 python-jose[cryptography]
 pydantic==2.5.3
+=======
+fastapi==0.109.0
+uvicorn==0.27.0
+jinja2
+python-multipart
+python-jose[cryptography]
+pydantic==2.5.3
+pydantic-core==2.14.6
+>>>>>>> 2c739f6 (Atualiza tela inicial do app_celular.html)
+passlib[bcrypt]==1.7.4
+fastapi==0.109.0
+uvicorn==0.27.0
+jinja2
+python-multipart
+python-jose[cryptography]
+pydantic==2.5.3
+pydantic-core==2.14.6
 passlib[bcrypt]==1.7.4
