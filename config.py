@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import sys
 import hashlib
@@ -1107,7 +1106,6 @@ def obter_status_trial():
     return dias_restantes > 0, dias_restantes, data_limite
 
 # Configurações de API externas
-=======
 import os
 import sys
 import hashlib
@@ -2216,5 +2214,4 @@ def obter_status_trial():
     return dias_restantes > 0, dias_restantes, data_limite
 
 # Configurações de API externas
->>>>>>> 2c739f6 (Atualiza tela inicial do app_celular.html)
 URL_VIACEP = "https://viacep.com.br/ws/{}/json/"  # Para busca de CEP
