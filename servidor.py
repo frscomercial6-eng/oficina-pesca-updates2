@@ -1609,4 +1609,3 @@ if __name__ == "__main__":
     print()
 
     uvicorn.run(app, host=args.host, port=args.porta, log_level="warning")
->>>>>>> 2c739f6 (Atualiza tela inicial do app_celular.html)
