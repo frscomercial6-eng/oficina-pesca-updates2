@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env python3
 """
 servidor.py — Servidor multi-usuário da Oficina de Pesca
@@ -802,7 +801,6 @@ if __name__ == "__main__":
     print()
 
     uvicorn.run(app, host=args.host, port=args.porta, log_level="warning")
-=======
 #!/usr/bin/env python3
 """
 servidor.py — Servidor multi-usuário da Oficina de Pesca
