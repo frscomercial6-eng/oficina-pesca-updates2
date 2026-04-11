@@ -28,9 +28,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 import uvicorn
-    FastAPI, Depends, HTTPException, Request, Form,
-    status as http_status,
-)
+from fastapi import FastAPI, Depends, HTTPException, Request, Form, status as http_status
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
